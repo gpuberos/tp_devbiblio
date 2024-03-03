@@ -37,7 +37,7 @@ class LivreManager extends Model
         $req->closeCursor();
 
         // Parcours de chaque livre récupéré depuis la base de données
-        foreach($livresDepuisBDD as $livre) {
+        foreach ($livresDepuisBDD as $livre) {
             // Création d'un nouvel objet Livre avec les informations du livre
             $l = new Livre($livre['id'], $livre['titre'], $livre['nbPages'], $livre['image']);
             // Ajout du nouvel objet Livre à la liste des livres
@@ -49,7 +49,7 @@ class LivreManager extends Model
     public function getLivreById(int $id)
     {
         // Parcourir chaque livre dans la liste des livres
-        foreach($this->listeLivres as $livre) {
+        foreach ($this->listeLivres as $livre) {
             // Si l'ID du livre correspond à l'ID recherché
             if ($livre->getId() === $id) {
                 // Retourner le livre correspondant
@@ -58,5 +58,25 @@ class LivreManager extends Model
         }
         // S'il n'existe pas retourne null
         return null;
+    }
+
+    public function addLivreBdd($titre, $nbPages, $image)
+    {
+        $req = "INSERT INTO livres (`titre`, `nbPages`, `image`)
+        VALUES (:titre, :nbPages, :image)";
+        $sth = $this->getBdd()->prepare($req);
+        $sth->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $sth->bindValue(":nbPages", $nbPages, PDO::PARAM_INT);
+        $sth->bindValue(":image", $image, PDO::PARAM_STR);
+        $result = $sth->execute();
+        $sth->closeCursor();
+
+        if ($result > 0) {
+            $id = $this->getBdd()->lastInsertId();
+            $livre = new Livre($id, $titre, $nbPages, $image);
+            $this->addLivre($livre);
+        } else {
+            throw new Exception("L'ajout du livre à la base de données a échoué");
+        }
     }
 }
