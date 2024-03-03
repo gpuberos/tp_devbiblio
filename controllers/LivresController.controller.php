@@ -4,7 +4,7 @@ require_once "models/LivreManager.class.php";
 
 class LivresController
 {
-    private $livreManager;
+    private LivreManager $livreManager;
 
     public function __construct()
     {
@@ -12,13 +12,13 @@ class LivresController
         $this->livreManager->loadLivres();
     }
 
-    public function viewLivres()
+    public function viewLivres(): void
     {
         $livres = $this->livreManager->getLivres();
         require "views/livres.view.php";
     }
 
-    public function viewLivre($id)
+    public function viewLivre(int $id): void
     {
         $livre = $this->livreManager->getLivreById($id);
 
@@ -29,12 +29,12 @@ class LivresController
         }
     }
 
-    public function addLivre()
+    public function addLivre(): void
     {
         require "views/addLivre.view.php";
     }
 
-    public function addLivreValidation()
+    public function addLivreValidation(): void
     {
         $file = $_FILES['image'];
         $dir = "public/assets/images/";
@@ -42,8 +42,16 @@ class LivresController
         $this->livreManager->addLivreBdd($_POST['titre'], $_POST['nbPages'], $addImageName);
         header('Location: ' . URL . "livres");
     }
+    
+    public function deleteLivre(int $id): void
+    {
+        $ImageName = $this->livreManager->getLivreById($id)->getImage();
+        unlink("public/assets/images/{$ImageName}");
+        $this->livreManager->deleteLivreBdd($id);
+        header('Location: ' . URL . "livres");
+    }
 
-    private function addImage($file, $dir)
+    private function addImage(array $file, string $dir): string
     {
         // Vérifie si le nom du fichier est défini et non vide
         if (!isset($file['name']) || empty($file['name']))

@@ -5,7 +5,7 @@ ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour
 ?>
 
 <div class="row">
-    <form method="post" action="<?= URL ?>livres/addvalid" enctype="multipart/form-data">
+    <form action="<?= URL ?>livres/addvalid" method="post" enctype="multipart/form-data">
         <fieldset>
             <div class="mb-3">
                 <label for="titre" class="form-label">Titre : </label>

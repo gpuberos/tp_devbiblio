@@ -41,7 +41,7 @@ try {
                 } else if ($url[1] === "modify") {
                     echo "modifier un livre";
                 } else if ($url[1] === "delete") {
-                    echo "suppression d'un livre";
+                    $livreController->deleteLivre($url[2]);
                 } else if ($url[1] === "addvalid") {
                     $livreController->addLivreValidation();
                 } else {

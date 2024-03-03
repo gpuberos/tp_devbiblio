@@ -6,9 +6,9 @@ cette class va être héritée directement des autres classe qui auront besoin d
 */
 abstract class Model
 {
-    private static $pdo;
+    private static ?PDO $pdo = null;
 
-    private static function setBdd()
+    private static function setBdd(): void
     {
         require_once 'config/config.php';
         
@@ -21,7 +21,7 @@ abstract class Model
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
-    protected function getBdd()
+    protected function getBdd(): PDO
     {
         if (self::$pdo === null) {
             self::setBdd();
