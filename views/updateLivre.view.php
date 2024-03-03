@@ -1,8 +1,4 @@
-<?php
-
-ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
-
-?>
+<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard ?>
 
 <div class="row">
     <form action="<?= URL ?>livres/updatevalid" method="post" enctype="multipart/form-data">

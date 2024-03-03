@@ -1,6 +1,7 @@
 <?php
 ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard
 
+// Vérifie si la session 'alert' n'est pas vide
 if (!empty($_SESSION['alert'])) :
 ?>
 
@@ -9,8 +10,9 @@ if (!empty($_SESSION['alert'])) :
             <?= $_SESSION['alert']['msg'] ?>
         </div>
     </div>
-    
+
 <?php
+    // Supprime la session 'alert' après l'affichage du message
     unset($_SESSION['alert']);
 endif;
 ?>

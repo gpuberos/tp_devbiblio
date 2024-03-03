@@ -1,5 +1,5 @@
-<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
-?>
+<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard ?>
+
 <div class="row">
     <div class="card mb-3">
         <div class="row g-0">
