@@ -1,4 +1,18 @@
-<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
+<?php
+ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard
+
+if (!empty($_SESSION['alert'])) :
+?>
+
+    <div class="row">
+        <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+            <?= $_SESSION['alert']['msg'] ?>
+        </div>
+    </div>
+    
+<?php
+    unset($_SESSION['alert']);
+endif;
 ?>
 
 <div class="row">

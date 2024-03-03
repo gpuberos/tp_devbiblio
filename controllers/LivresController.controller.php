@@ -40,6 +40,12 @@ class LivresController
         $dir = "public/assets/images/";
         $addImageName = $this->addImage($file, $dir);
         $this->livreManager->addLivreBdd($_POST['titre'], $_POST['nbPages'], $addImageName);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Ajout réalisée avec succès"
+        ];
+
         header('Location: ' . URL . "livres");
     }
 
@@ -48,6 +54,12 @@ class LivresController
         $ImageName = $this->livreManager->getLivreById($id)->getImage();
         unlink("public/assets/images/{$ImageName}");
         $this->livreManager->deleteLivreBdd($id);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Suppression réalisée avec succès"
+        ];
+
         header('Location: ' . URL . "livres");
     }
 
@@ -71,6 +83,12 @@ class LivresController
         }
         
         $this->livreManager->updateLivreBdd($_POST['idLivre'], $_POST['titre'], $_POST['nbPages'], $imageNameToAdd);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Modification réalisée avec succès"
+        ];
+
         header('Location: ' . URL . "livres");
     }
 

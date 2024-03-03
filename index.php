@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Vérifie si le protocole HTTPS est utilisé. Si oui, définissez $protocol sur "https", sinon sur "http"
 $protocol = isset($_SERVER['HTTPS']) ? "https" : "http";
 
