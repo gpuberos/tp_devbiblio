@@ -42,12 +42,35 @@ class LivresController
         $this->livreManager->addLivreBdd($_POST['titre'], $_POST['nbPages'], $addImageName);
         header('Location: ' . URL . "livres");
     }
-    
+
     public function deleteLivre(int $id): void
     {
         $ImageName = $this->livreManager->getLivreById($id)->getImage();
         unlink("public/assets/images/{$ImageName}");
         $this->livreManager->deleteLivreBdd($id);
+        header('Location: ' . URL . "livres");
+    }
+
+    public function updateLivre(int $id): void
+    {
+        $livre = $this->livreManager->getLivreById($id);
+        require "views/updateLivre.view.php";
+    }
+
+    public function updateLivreValidation(): void
+    {
+        $currentImage = $this->livreManager->getLivreById($_POST['idLivre'])->getImage();
+        $file = $_FILES['image'];
+
+        if($file['size'] > 0) {
+            unlink("public/assets/images/{$currentImage}");
+            $dir = "public/assets/images/";
+            $imageNameToAdd = $this->addImage($file, $dir);
+        } else {
+            $imageNameToAdd = $currentImage;
+        }
+        
+        $this->livreManager->updateLivreBdd($_POST['idLivre'], $_POST['titre'], $_POST['nbPages'], $imageNameToAdd);
         header('Location: ' . URL . "livres");
     }
 

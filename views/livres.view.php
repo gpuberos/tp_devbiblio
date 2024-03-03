@@ -18,7 +18,7 @@
                     <td class="align-middle"><img src="<?= URL ?>/public/assets/images/<?= $livre->getImage() ?>" width="120" height="120" alt="Couverture <?= $livre->getTitre()  ?>"></td>
                     <td class="align-middle"><a href="<?= URL ?>/livres/details/<?= $livre->getId() ?>"><?= $livre->getTitre() ?></a></td>
                     <td class="align-middle"><?= $livre->getNbPages() ?></td>
-                    <td class="align-middle"><a href="#" class="btn btn-warning">Modifier</a></td>
+                    <td class="align-middle"><a href="<?= URL ?>livres/update/<?= $livre->getId() ?>" class="btn btn-warning">Modifier</a></td>
                     <td class="align-middle">
                         <form action="<?= URL ?>livres/delete/<?= $livre->getId() ?>" method="post" onSubmit="return confirm('Voulez-vous vraiment supprimer ce livre ?')">
                             <button type="submit" class="btn btn-danger">Supprimer</button>

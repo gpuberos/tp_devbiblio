@@ -96,4 +96,26 @@ class LivreManager extends Model
             throw new Exception("La suppression du livre de la base de données a échoué");
         }
     }
+
+    public function updateLivreBdd(int $id, string $titre, int $nbPages, string $image)
+    {
+        $req = "UPDATE livres 
+                SET `titre` = :titre, `nbPages` = :nbPages, `image` = :image
+                WHERE id = :id";
+        $sth = $this->getBdd()->prepare($req);
+        $sth->bindValue(":id", $id, PDO::PARAM_INT);
+        $sth->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $sth->bindValue(":nbPages", $nbPages, PDO::PARAM_INT);
+        $sth->bindValue(":image", $image, PDO::PARAM_STR);
+        $result = $sth->execute();
+        $sth->closeCursor();
+
+        if ($result > 0) {
+            $this->getLivreById($id)->setTitre($titre);
+            $this->getLivreById($id)->setNbPages($nbPages);
+            $this->getLivreById($id)->setImage($image);
+        } else {
+            throw new Exception("La mise à jour du livre dans la base de données a échoué");
+        }
+    }
 }
