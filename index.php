@@ -33,9 +33,9 @@ try {
                 break;
             case 'livres':
                 if (empty($url[1])) {
-                    $livreController->afficherLivres();
+                    $livreController->viewLivres();
                 } else if ($url[1] === "details") {
-                    $livreController->afficherLivre($url[2]);
+                    $livreController->viewLivre($url[2]);
                 } else if ($url[1] === "add") {
                     echo "ajouter un livre";
                 } else if ($url[1] === "modify") {

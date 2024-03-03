@@ -26,7 +26,7 @@
     </table>
 
     <div class="m-2 p-2">
-        <a class="btn btn-success d-block" href="#">Ajouter</a>
+        <a class="btn btn-success d-block" href="<?= URL ?>livres/add">Ajouter</a>
     </div>
 </div>
 

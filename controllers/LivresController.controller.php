@@ -12,13 +12,13 @@ class LivresController
         $this->livreManager->loadLivres();
     }
 
-    public function afficherLivres()
+    public function viewLivres()
     {
         $livres = $this->livreManager->getLivres();
         require "views/livres.view.php";
     }
 
-    public function afficherLivre($id)
+    public function viewLivre($id)
     {
         $livre = $this->livreManager->getLivreById($id);
         
