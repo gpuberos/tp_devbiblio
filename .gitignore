@@ -1,0 +1,41 @@
+# Fichiers du système d'exploitation
+######################
+.DS_Store
+Thumbs.db
+
+# Fichiers de l'environnement de développement
+######################
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Fichiers de construction et de distribution
+######################
+bin/
+obj/
+dist/
+out/
+
+# Fichiers de dépendances (commentez ces lignes si le projet nécessite de suivre ces fichiers)
+######################
+node_modules/
+jspm_packages/
+bower_components/
+package-lock.json
+yarn.lock
+
+# Fichiers de logs et de base de données
+######################
+*.log
+*.sqlite
+
+# Fichiers de sauvegarde, swap, etc.
+######################
+*~
+*.swp
+*.bak
+*.tmp
+*.swm

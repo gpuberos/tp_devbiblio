@@ -3,10 +3,10 @@
 $config = [
     'database' => [
         'db_host' => 'localhost',
-        'db_name' => 'tdb_biblio',
+        'db_name' => 'database_name',
         'db_port' => '3306',
         'db_char' => 'utf8',
         'db_user' => 'root',
-        'db_pass' => 'root'
+        'db_pass' => ''
     ]
 ];
