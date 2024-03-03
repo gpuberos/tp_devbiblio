@@ -7,7 +7,7 @@ require_once "Livre.class.php";
 // Définition de la classe LivreManager qui hérite de la classe Model
 class LivreManager extends Model
 {
-    // Déclaration d'une propriété privée pour stocker une liste de livres
+    // Déclaration d'une propriété privée pour stocker une liste de livres (tableau)
     private $listeLivres;
 
     // Méthode pour ajouter un livre à la liste
@@ -43,5 +43,20 @@ class LivreManager extends Model
             // Ajout du nouvel objet Livre à la liste des livres
             $this->addLivre($l);
         }
+    }
+
+    // Méthode pour obtenir un livre par son id
+    public function getLivreById(int $id)
+    {
+        // Parcourir chaque livre dans la liste des livres
+        foreach($this->listeLivres as $livre) {
+            // Si l'ID du livre correspond à l'ID recherché
+            if ($livre->getId() === $id) {
+                // Retourner le livre correspondant
+                return $livre;
+            }
+        }
+        // S'il n'existe pas retourne null
+        return null;
     }
 }

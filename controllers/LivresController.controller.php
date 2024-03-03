@@ -17,4 +17,15 @@ class LivresController
         $livres = $this->livreManager->getLivres();
         require "views/livres.view.php";
     }
+
+    public function afficherLivre($id)
+    {
+        $livre = $this->livreManager->getLivreById($id);
+        
+        if ($livre !== null) {
+            require "views/livre.view.php";
+        } else {
+            echo "Aucun livre trouvé avec l'id : {$id}";
+        }
+    }
 }

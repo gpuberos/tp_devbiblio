@@ -1,4 +1,5 @@
-<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard ?>
+<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
+?>
 
 <div class="row">
     <table class="table text-center">
@@ -14,9 +15,9 @@
         <tbody>
             <?php foreach ($livres as $livre) : ?>
                 <tr>
-                    <td class="align-middle"><img src="public/assets/images/<?= $livre->getImage()  ?>" width="120" height="120" alt="Couverture <?= $livre->getTitre()  ?>"></td>
-                    <td class="align-middle"><?= $livre->getTitre()  ?></td>
-                    <td class="align-middle"><?= $livre->getNbPages()  ?></td>
+                    <td class="align-middle"><img src="<?= URL ?>/public/assets/images/<?= $livre->getImage() ?>" width="120" height="120" alt="Couverture <?= $livre->getTitre()  ?>"></td>
+                    <td class="align-middle"><a href="<?= URL ?>/livres/details/<?= $livre->getId() ?>"><?= $livre->getTitre() ?></a></td>
+                    <td class="align-middle"><?= $livre->getNbPages() ?></td>
                     <td class="align-middle"><a href="#" class="btn btn-warning">Modifier</a></td>
                     <td class="align-middle"><a href="#" class="btn btn-danger">Supprimer</a></td>
                 </tr>
