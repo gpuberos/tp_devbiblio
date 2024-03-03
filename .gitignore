@@ -39,3 +39,6 @@ yarn.lock
 *.bak
 *.tmp
 *.swm
+
+# Fichiers de configuration
+config/config.php
