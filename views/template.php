@@ -20,17 +20,17 @@
 
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Dev/Biblio</a>
+            <a class="navbar-brand" href="accueil">Dev/Biblio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Accueil</a>
+                        <a class="nav-link" href="accueil">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="livres.php">Livres</a>
+                        <a class="nav-link" href="livres">Livres</a>
                     </li>
                 </ul>
             </div>

@@ -1,12 +1,18 @@
-<?php
+<?php 
 
-ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
+require_once "controllers/LivresController.controller.php";
+$livreController = new LivresController;
 
-
-
-$content = ob_get_clean(); // Va déverser tout ce qui est dans la variable $content (entre ob_start() et ob_get_clean())
-$titre = "Bibliothèque de développeurs";
-
-require_once "template.php";
-
-?>
+// Routeur
+if (empty($_GET['page'])) {
+    require_once "views/accueil.view.php";
+} else {
+    switch ($_GET['page']) {
+        case 'accueil':
+            require_once "views/accueil.view.php";
+            break;
+        case 'livres':
+            $livreController->afficherLivres();
+            break;
+    }
+}

@@ -1,14 +1,4 @@
-<?php
-
-require_once "LivreManager.class.php";
-$livreManager = new LivreManager;
-$livreManager->loadLivres();
-
-$livres = $livreManager->getLivres();
-
-ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard 
-
-?>
+<?php ob_start(); // Ouverture du buffer PHP pour mettre en temporisation du code pour plutard ?>
 
 <div class="row">
     <table class="table text-center">
